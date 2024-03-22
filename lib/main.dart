@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
                 radius: 20,
               ));
             }
-            return const WelcomeScreen();
+            return WelcomeScreen();
           }),
     );
   }
