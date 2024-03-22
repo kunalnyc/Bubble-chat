@@ -40,9 +40,6 @@ class _HomeState extends State<Home> {
             children: [
               CircleAvatar(
                 radius: 22,
-                // backgroundImage: NetworkImage(
-                //   'https://media.istockphoto.com/id/519078727/photo/male-silhouette-as-avatar-profile-picture.webp?b=1&s=170667a&w=0&k=20&c=JzPsyMEFcdQp2UlFqLVeuOaj2bOpteXUWFR9FJzTnBM=',
-                // ),
               ),
               Positioned(
                 bottom: 0,
@@ -58,7 +55,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      endDrawer: _buildSettingsDrawer(),
+      // endDrawer: _buildSettingsDrawer(),
       body: Column(
         children: [
           Padding(
