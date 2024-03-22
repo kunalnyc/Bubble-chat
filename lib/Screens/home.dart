@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:bubble_chat/functions/signout_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 enum Sky { messages, viridian, cerulean }
@@ -35,30 +33,8 @@ class _HomeState extends State<Home> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        actions: [
-          Stack(
-            children: [
-              CircleAvatar(
-                radius: 22,
-                // backgroundImage: NetworkImage(
-                //   'https://media.istockphoto.com/id/519078727/photo/male-silhouette-as-avatar-profile-picture.webp?b=1&s=170667a&w=0&k=20&c=JzPsyMEFcdQp2UlFqLVeuOaj2bOpteXUWFR9FJzTnBM=',
-                // ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
-                  }, // Handle settings action
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
-      endDrawer: _buildSettingsDrawer(),
+      endDrawer: _buildSettingsDrawer(context),
       body: Column(
         children: [
           Padding(
@@ -211,52 +187,99 @@ class RequestsPage extends StatelessWidget {
   }
 }
 
-Widget _buildSettingsDrawer() {
+Widget _buildSettingsDrawer(BuildContext context) {
   return Drawer(
+    backgroundColor: CupertinoColors.white,
     child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
         DrawerHeader(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color.fromARGB(255, 140, 51, 255),
           ),
           child: Text(
             'Settings',
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+                color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: CupertinoColors.darkBackgroundGray,
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(10)),
+            child: ListTile(
+              title: Text(
+                'Edit Profile',
+                style: TextStyle(color: CupertinoColors.white),
+              ),
+              onTap: () {
+                // Handle profile
+              },
             ),
           ),
         ),
-        ListTile(
-          title: Text('Profile'),
-          onTap: () {
-            // Handle profile
-          },
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: CupertinoColors.darkBackgroundGray,
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(10)),
+            child: ListTile(
+              title: Text(
+                'Help & Support',
+                style: TextStyle(color: CupertinoColors.white),
+              ),
+              onTap: () {
+                // Handle profile
+              },
+            ),
+          ),
         ),
-        ListTile(
-          title: Text('About'),
-          onTap: () {
-            // Handle about
-          },
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: CupertinoColors.darkBackgroundGray,
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(10)),
+            child: ListTile(
+              title: Text(
+                'About',
+                style: TextStyle(color: CupertinoColors.white),
+              ),
+              onTap: () {
+                // Handle profile
+              },
+            ),
+          ),
         ),
-        ListTile(
-          title: Text('Help'),
-          onTap: () {
-            // Handle help
-          },
-        ),
-        ListTile(
-          title: Text('Logout'),
-          onTap: () {
-            // Handle logout
-          },
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: CupertinoColors.darkBackgroundGray,
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(10)),
+            child: ListTile(
+              title: Text(
+                'Logout',
+                style: TextStyle(color: CupertinoColors.destructiveRed),
+              ),
+              onTap: () {
+                // Handle profile
+                AuthSignOut().signOut(context);
+              },
+            ),
+          ),
         ),
       ],
     ),
   );
 }
-
 
 // PopupMenuButton<int> _buildProfilePopupMenuButton() {
 //   return PopupMenuButton<int>(
@@ -308,10 +331,6 @@ Widget _buildSettingsDrawer() {
 //     },
 //   );
 // }
-
-
-
-
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
