@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:bubble_chat/Screens/Messages.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({
